@@ -1,0 +1,16 @@
+<button *ngIf="!isLoaded; else isLoad" mat-button color="accent" (click)="getUsers()">Загрузить пользователей</button>
+<ng-template #isLoad>
+    <ul>
+        <li *ngFor="let user of users">{{user.id}} <a [routerLink]="['/users', user.id]">{{user.name}} ({{user.username}})</a>
+            <button mat-button color="warn" (click)="deleteUser(user.id)">Удалить</button></li>
+    </ul>
+</ng-template>
+
+<div *ngIf="emptyList">
+    <input type="text" [(ngModel)]="userName">
+    <input type="text" [(ngModel)]="name">
+
+
+    <button  mat-button color="primary" (click)="addUser()">Добавить</button>
+
+</div>

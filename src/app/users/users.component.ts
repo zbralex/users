@@ -9,8 +9,8 @@ import {Users, UsersService} from '../services/users.service';
 })
 export class UsersComponent {
   users: Users[];
-  name: '';
-  userName: '';
+  name?: '';
+  userName?: '';
   isLoaded: boolean = false;
 
   emptyList: boolean;
@@ -20,8 +20,8 @@ export class UsersComponent {
 
   public getUsers() {
       this.userSevice.fetchUsers()
-          .subscribe(users => {
-            this.users = users;
+          .subscribe(response => {
+            this.users = response;
             this.isLoaded = true;
 
           });
@@ -31,7 +31,6 @@ export class UsersComponent {
     this.userSevice.deleteUser(id)
         .subscribe( () => {
           this.users = this.users.filter( u => u.id !== id);
-            console.log(this.users.length);
           if (this.users.length < 9) {
               this.emptyList = true;
               console.log(this.emptyList);

@@ -8,14 +8,14 @@ import {Users, UsersService} from '../../services/users.service';
   styleUrls: ['./user-detail.component.scss']
 })
 export class UserDetailComponent implements OnInit {
-user: Users[];
+user: Users[] = [];
   constructor(private route: ActivatedRoute,
               private userServise: UsersService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
 
-      this.user = this.userServise.getById(params.id)
+      this.userServise.getById(+params.id)
           .subscribe(resp => {
             this.user = resp;
           })

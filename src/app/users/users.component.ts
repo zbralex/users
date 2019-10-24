@@ -29,10 +29,7 @@ export class UsersComponent {
   deleteUser(id: number) {
     this.userSevice.deleteUser(id)
         .subscribe( () => {
-          return this.users.filter( u => u.id !== id);
-          if (this.users.length < 9) {
-              this.emptyList = true;
-          }
+            return this.users.filter( u => u.id !== id );
         });
   }
   addUser() {
@@ -45,7 +42,7 @@ export class UsersComponent {
               this.name = '';
               this.userName = '';
 
-          if (this.users.length > 11) {
+              if (this.users.length > 11) {
               this.emptyList = false;
               console.log(this.emptyList);
           }

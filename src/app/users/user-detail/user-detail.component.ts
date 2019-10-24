@@ -9,7 +9,7 @@ import {Meta, Title} from '@angular/platform-browser';
   styleUrls: ['./user-detail.component.scss']
 })
 export class UserDetailComponent implements OnInit {
-user: Users;
+user: Users[] = [];
   constructor(private route: ActivatedRoute,
               private userServise: UsersService,
               private title: Title,
@@ -17,17 +17,21 @@ user: Users;
   }
 
   ngOnInit(): void {
-    this.user = this.route.snapshot.data.user;
+  this.route.data.subscribe(users => {
+          this.user = users.user;
+            // seo-tags
+          this.title.setTitle(users.user.name);
+          this.meta.addTags([
+            {name: users.user.username},
+            {content: users.user.email}
+          ]);
+        } );
   //   this.route.params.subscribe((params: Params) => {
   //
   //     this.userServise.getById(+params.id)
   //         .subscribe(resp => {
   //           this.user = resp;
-  //           this.title.setTitle(resp.name);
-  //           this.meta.addTags([
-  //             {name: resp.username},
-  //             {content: resp.email}
-  //           ]);
+  //
   //         });
   //   });
   // }

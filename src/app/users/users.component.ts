@@ -8,7 +8,7 @@ import {Users, UsersService} from '../services/users.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent {
-  users: Users[];
+  users: Users = [];
   name?: '';
   userName?: '';
   isLoaded: boolean = false;
@@ -33,7 +33,6 @@ export class UsersComponent {
           this.users = this.users.filter( u => u.id !== id);
           if (this.users.length < 9) {
               this.emptyList = true;
-              console.log(this.emptyList);
           }
         });
   }

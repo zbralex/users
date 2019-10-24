@@ -3,11 +3,16 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {UsersComponent} from '../users/users.component';
 import {UserDetailComponent} from '../users/user-detail/user-detail.component';
+import {UserResolver} from '../user.resolver';
 
 const routes: Routes = [
   {path: '', component: UsersComponent},
   {path: 'users', component: UsersComponent},
-  {path: 'users/:id', component: UserDetailComponent}
+  {path: 'users/:id',
+    component: UserDetailComponent,
+  resolve: {
+    user: UserResolver
+  }}
 ];
 
 @NgModule({

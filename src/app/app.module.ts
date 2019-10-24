@@ -13,6 +13,7 @@ import {RoutingModule} from './routing/routing.module';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
+import {MatProgressBarModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -22,15 +23,16 @@ import { UserDetailComponent } from './users/user-detail/user-detail.component';
     UsersComponent,
     UserDetailComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    RoutingModule,
-    MatButtonToggleModule,
-    MatButtonModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        RoutingModule,
+        MatButtonToggleModule,
+        MatButtonModule,
+        MatProgressBarModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

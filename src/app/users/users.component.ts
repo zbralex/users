@@ -8,7 +8,7 @@ import {Users, UsersService} from '../services/users.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent {
-  users: Users = [];
+  users: any;
   name?: '';
   userName?: '';
   isLoaded: boolean = false;
@@ -22,15 +22,14 @@ export class UsersComponent {
       this.userSevice.fetchUsers()
           .subscribe(response => {
             this.users = response;
-            this.isLoaded = true;
-
+            this.isLoaded = !this.isLoaded;
           });
   }
 
   deleteUser(id: number) {
     this.userSevice.deleteUser(id)
         .subscribe( () => {
-          this.users = this.users.filter( u => u.id !== id);
+          return this.users.filter( u => u.id !== id);
           if (this.users.length < 9) {
               this.emptyList = true;
           }

@@ -9,9 +9,8 @@ const routes: Routes = [
   {path: '', component: UsersComponent},
   {path: 'users', component: UsersComponent},
   {path: 'users/:id',
-    component: UserDetailComponent,
-  resolve: {
-    user: UserResolver
+    component: UserDetailComponent, resolve: {
+      user: UserResolver
   }}
 ];
 

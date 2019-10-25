@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Users, UsersService} from '../../services/users.service';
 import {Meta, Title} from '@angular/platform-browser';
 
@@ -13,7 +13,8 @@ user: Users[] = [];
   constructor(private route: ActivatedRoute,
               private userServise: UsersService,
               private title: Title,
-              private meta: Meta) {
+              private meta: Meta,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -26,14 +27,9 @@ user: Users[] = [];
             {content: users.user.email}
           ]);
         } );
-  //   this.route.params.subscribe((params: Params) => {
-  //
-  //     this.userServise.getById(+params.id)
-  //         .subscribe(resp => {
-  //           this.user = resp;
-  //
-  //         });
-  //   });
-  // }
+}
 
-}}
+    goBAckButton() {
+        this.router.navigate(['/users']);
+    }
+}

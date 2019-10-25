@@ -31,5 +31,6 @@ user: Users[] = [];
 
     goBAckButton() {
         this.router.navigate(['/users']);
+        this.title.setTitle('Users');
     }
 }

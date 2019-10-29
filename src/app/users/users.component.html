@@ -1,6 +1,6 @@
 <button *ngIf="!isLoaded; else isLoad" mat-button color="accent" (click)="getUsers()">Загрузить пользователей</button>
 <ng-template #isLoad>
-    <ul>
+    <ul [@startVisible]="visibleState">
         <li *ngFor="let user of users">{{user.id}} <a [routerLink]="['/users', user.id]">{{user.name}} (Username: <i>{{user.username}}</i>)</a>
             <button mat-button color="warn" (click)="deleteUser(user.id)">Удалить</button></li>
     </ul>

@@ -1,9 +1,29 @@
-<p>{{user.username}}</p>
+<p [@box]="boxState">{{user.username}}</p>
 <p>{{user.name}}</p>
-<b><i>Address: </i></b> <br>
-<strong>{{user.address?.street}}</strong><br>
-<strong>{{user.address?.suite}}</strong><br>
-<strong>{{user.address?.city}}</strong><br>
-<strong>{{user.address?.zipcode}}</strong>
+
+<button (click)="boxState = 'special'">special</button>
+<button (click)="visible = !visible">visible</button>
 <hr>
-<button mat-stroked-button color="primary" (click)="goBAckButton()">go back</button>
+<button mat-raised-button color="accent" (click)="goBAckButton()">go back</button>
+<button mat-raised-button color="primary" (click)="loadAddress(user.id)">Показать адрес</button>
+<hr>
+<ul *ngIf="visible">
+    <li>
+        <strong >{{userAddress?.street}}</strong>
+    </li>
+    <li>
+        <strong>{{userAddress?.suite}}</strong>
+    </li>
+    <li>
+        <strong>{{userAddress?.city}}</strong>
+    </li>
+    <li>
+        <strong>{{userAddress?.zipcode}}</strong>
+    </li>
+</ul>
+
+
+
+
+
+

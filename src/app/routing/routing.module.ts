@@ -8,10 +8,8 @@ import {UserResolver} from '../user.resolver';
 const routes: Routes = [
   {path: '', component: UsersComponent},
   {path: 'users', component: UsersComponent},
-  {path: 'users/:id',
-    component: UserDetailComponent, resolve: {
-      user: UserResolver
-  }}
+  {path: 'users/:id', component: UserDetailComponent, resolve: { user: UserResolver}},
+  {path: 'user-address', loadChildren: () => import('../users/user-detail/user-address/user-address.module').then(m => m.UserAddressModule)}
 ];
 
 @NgModule({
